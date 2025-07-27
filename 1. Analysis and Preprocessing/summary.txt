@@ -1,0 +1,9 @@
+In this phase, I conducted Exploratory Data Analysis and preprocessing on the X store sales dataset to better understand the data and prepare it for machine learning. The dataset consists of 2,121 rows and 21 columns, including 6 numerical and 15 categorical variables.
+
+I began by computing summary statistics and visualizing the distribution of numerical variables using histograms and box plots. These visualizations revealed general distributions and potential outliers. Based on kurtosis, skewness, and visual inspection, I found that while Discount and Quantity contain outlier values, these appear to be valid and meaningful from a business perspective. I applied the IQR method to remove outliers from the Profit variable and used a logarithmic transformation on the Sales variable to approximate a normal distribution. Notably, the dataset contains no missing values.
+
+For data preparation, I transformed all relevant variables into numerical formats suitable for machine learning models. I first converted the Date column to datetime format and extracted features such as Order Year, Quarter, Month, and Shipping Days (Ship Date - Order Date). The original Date column was then dropped. I applied one-hot encoding to the categorical variables, converting them into binary indicator columns.
+
+In the feature engineering step, I removed identifier fields such as ID, Product Name, and Customer Name, along with Category and Country, as they contained only one distinct value. Among geographic features, I retained only the State variable for analysis.
+
+Finally, I explored correlations between variables. Among the numerical features, a strong negative correlation (-0.53) was found between Discount and Profit, aligning with business expectations that higher discounts typically lead to lower profit margins. Moreover, the new Shipping Date variable has high correlation with Ship Mode One Hot variables. Thus I dropped the Shipping Date for the final model.
